@@ -28,8 +28,8 @@ public class Food implements Serializable {
     
     public Food(){};
     
-    public Food(int id , String foodName, String indt, double price){
-        this.foodId = id;
+    public Food(String foodName, String indt, double price){
+        this.foodId = 0;
         this.foodName = foodName;
         this.ingredients = indt;
         this.price = price;

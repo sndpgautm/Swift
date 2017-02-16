@@ -42,14 +42,15 @@ public class FoodResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getJson() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Food> getJson() {
         Session session = HibernateStuff.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
-        System.out.println("im here");
-        ArrayList<Food> a = new FoodData().getMenu();
-        System.out.println(a);
-        System.out.println("i am also here");
-        return "done";
+        List<Food> menu = new FoodData().getMenu();
+        for(Food f : menu){
+            session.saveOrUpdate(f);
+        }
+        session.getTransaction().commit();
+        return menu;
     }
 }

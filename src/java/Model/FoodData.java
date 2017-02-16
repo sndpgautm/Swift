@@ -21,8 +21,10 @@ public class FoodData {
     
     
     public FoodData() {
-        menu.add(new Food(1, "A", "abc", 15.00));
-        menu.add(new Food(2, "B", "bnm", 12.00));
+        menu.add(new Food("A", "abc", 15.00));
+        menu.add(new Food("B", "bnm", 12.00));
+        menu.add(new Food("D", "abcdssad", 16.00));
+        menu.add(new Food("E", "bnmdffd", 13.00));
     }
     
 }
