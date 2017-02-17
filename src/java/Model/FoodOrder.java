@@ -7,6 +7,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -16,7 +17,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,6 +35,7 @@ public class FoodOrder implements Serializable {
     private Long orderId;
     private double total;
     private int tableNo;
+    private Date orderPlacedAt;
     private List<Food> items;
     private OrderStatus status;
     
@@ -44,9 +49,10 @@ public class FoodOrder implements Serializable {
         this.items = items;
         this.status = OrderStatus.RECIEVED;
         this.total = 0;
-        for (Food f : items) {
-            this.total =+ f.getPrice();
+        for (Food f : this.items) {
+            this.total = this.total + f.getPrice();
         }
+        this.orderPlacedAt = new Date(); 
     }
     
     @XmlElement
@@ -76,12 +82,26 @@ public class FoodOrder implements Serializable {
     
     
     @XmlElement
-    @OneToMany (targetEntity=Food.class,
-            fetch=FetchType.EAGER,
+    @ManyToMany (targetEntity=Food.class,
+            fetch=FetchType.LAZY,
             cascade=CascadeType.ALL)
     public List<Food> getItems() {
         return this.items;
     }
+
+    @XmlElement
+    @Temporal (TemporalType.TIMESTAMP)
+    public Date getOrderPlacedAt() {
+        return this.orderPlacedAt;
+    }
+
+    public void setOrderPlacedAt(Date orderPlacedAt) {
+        this.orderPlacedAt = orderPlacedAt;
+    }
+    
+    
+    
+    
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
