@@ -25,7 +25,7 @@ import org.hibernate.Session;
  *
  * @author Rocke
  */
-@Path("/foods")
+@Path("/menu")
 public class FoodResource {
 
     @Context
