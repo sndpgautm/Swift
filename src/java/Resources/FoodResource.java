@@ -43,7 +43,7 @@ public class FoodResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Food> getJson() {
+    public List<Food> getMenu() {
         Session session = HibernateStuff.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
         List<Food> menu = new FoodData().getMenu();

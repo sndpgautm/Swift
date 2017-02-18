@@ -10,6 +10,7 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -49,7 +50,7 @@ public class Food implements Serializable {
     }
 
     @XmlElement
-    @Basic
+    @Lob
     public String getIngredients() {
         return this.ingredients;
     }
