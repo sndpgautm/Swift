@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(Resources.EmployeeResource.class);
         resources.add(Resources.FoodOrderResource.class);
         resources.add(Resources.FoodResource.class);
+        resources.add(Resources.NoteResource.class);
     }
     
 }
