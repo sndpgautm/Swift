@@ -1,0 +1,143 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 18, 2017, 5:18:54 AM
+    Author     : DELL
+*/
+#header-nav{
+    background-color:#FFFACD;
+}
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+    border: 1px solid #A52A2A;
+
+}
+
+#nav-list a {
+  color: #951C49;
+  text-align: center;
+}
+
+#nav-list a:hover {
+  background: #E7E7E7;
+}
+
+.navbar-header button.navbar-toggle{
+    clear: both;
+    margin-top: -10px;
+}
+
+#nav-list a {
+    color: #951C49;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.navbar-brand h1{
+    font-family: 'Lora', serif;
+
+
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #222;
+    margin-top: 0;
+
+    line-height: .75;
+}
+
+
+#logo-img {
+    background: url('../images/swift.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    margin: 10px 15px 10px 0;
+}
+
+a h1{
+    margin-top:0em;
+}
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+    #nav-list a {
+        color: #951C49;
+        text-align: center;
+        font-size: 2em;
+        margin-top:15px;
+    }
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* Header */
+    #logo-img {
+        background: url('../images/swift.png') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+        margin: 5px 5px 5px 0;
+    }
+    /* End Header */
+    a h1{
+        margin-left:0.4em;
+    }
+
+    #sublogo img{
+        height:2em;
+        width:2em;
+        margin-left:0.7em;
+    }
+
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+    #sublogo img{
+        height:2em;
+        width:2em;
+        margin-left:0.7em;
+    }
+    a h1{
+        font-size: 1.4em;
+    }
+    
+    #nav-list a {
+        color: #951C49;
+        text-align: center;
+        
+        margin-top:10px;
+    }
+
+
+}
+
+@media (max-width:767px){
+    #sublogo img{
+        height:2em;
+        width:2em;
+        margin-left:0.2em;
+    }
+
+    #collapsable-nav a { /* Collapsed nav menu text */
+        font-size: 1.2em;
+    }
+
+    #collapsable-nav a span { /* Collapsed nav menu glyph */
+        font-size: 1em;
+        margin-right: 5px;
+    }
+
+    a h1{
+        font-size: 1.4em;
+    }
+}
