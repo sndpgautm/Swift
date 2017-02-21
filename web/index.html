@@ -9,9 +9,9 @@ and open the template in the editor.
         <title>Swift</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" rel="stylesheet" href="style/styles.css">
+        <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-
+        <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
 
     </head>
     <body>
@@ -61,9 +61,28 @@ and open the template in the editor.
             </nav><!-- #header-nav -->
         </header>
 
+        <table class="newTasks" id="newTasks">
+            <tr><th>Title</th><th>Description</th><th></th></tr>
+            <tr><td><input type="text" id="title-1" value="Get Milk" /></td><td><input type="text" id="description-1" value="Need to go shopping to pick up milk." /></td><td><a class="deleteButton" id="delete-1" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-2" value="Pay Bills" /></td><td><input type="text" id="description-2" value="Gas and electric bills due soon." /></td><td><a class="deleteButton" id="delete-2" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-3" value="Take Dogs To Vets" /></td><td><input type="text" id="description-3" value="Dog needs taking to vets for injection." /></td><td><a class="deleteButton" id="delete-3" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-4" value="Record Tv Program" /></td><td><input type="text" id="description-4" value="Saving Private Ryan on tv make sure you record it." /></td><td><a class="deleteButton" id="delete-4" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-5" value="Go Doctors" /></td><td><input type="text" id="description-5" value="Doctors appointment is tomorrow!" /></td><td><a class="deleteButton" id="delete-5" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-6" value="Car Insurance" /></td><td><input type="text" id="description-6" value="Car insurance due end of the month." /></td><td><a class="deleteButton" id="delete-6" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-7" value="Go Dentist" /></td><td><input type="text" id="description-7" value="Dentist appointment is next Week. Make sure you bruch them teeth!" /></td><td><a class="deleteButton" id="delete-7" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-8" value="Home Insurance" /></td><td><input type="text" id="description-8" value="House insurance finishes tomorrow don't burn the place down." /></td><td><a class="deleteButton" id="delete-8" title="Delete Task">X</a></td></tr>
+        </table>
+        <p><input type="button" id="addNew" value="Add" /></p>
+        <p><input type="button" id="refreshNotes" value="Refresh Sticky Notes" /></p>
+
+        <ul class="sticky_notes">
+
+        </ul>
+
 
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
     </body>
 
 </html>
