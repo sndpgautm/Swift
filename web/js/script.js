@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
-    
+
     //Add button click event
     $('#addNew').click(function () {
-        
+
         addNewRow();
     });
 
@@ -24,8 +24,8 @@ $(document).ready(function () {
     function addNewRow() {
         var numRows = $('#newTasks tr').length;
 
-        $('#newTasks').append('<tr><td><input type="text" id="title-' + numRows + '" /></td><td><input type="text" id="description-' + numRows + '" /></td></tr>');
-        
+        $('#newTasks').append('<tr><td><input type="text" id="title-' + numRows + '" /></td><td><input type="text" id="orders-' + numRows + '" /></td></tr>');
+
     }
 
     /**
@@ -40,10 +40,11 @@ $(document).ready(function () {
 
         $.each(tableRows, function (i) {
             var title = $(this).find('input[id^="title"]').val();
-            var description = $(this).find('input[id^="description"]').val();
+            var orders = $(this).find('input[id^="orders"]').val();
+            var status = $(this).find('input[id^="status"]').val();
             console.log("hello");
-            if (title != undefined && description != undefined) {
-                createNotes(title, description);
+            if (title != undefined && orders != undefined && status != undefined) {
+                createNotes(title, orders, status);
             }
         });
     }
@@ -51,9 +52,15 @@ $(document).ready(function () {
     /**
      * Creates the sticky notes and gives it a random colour.
      */
-    function createNotes(title, description) {
-        var header = '<h2>' + title + '</h2>';
-        var desc = '<p>' + description + '</p>';
+    function createNotes(title, orders, status) {
+        var header = '<h4>Table No.' + title + '</h4>';
+        var desc = '<p>Orders: ' + orders + '</p>';
+        var statuses = '<p>Status: ' + status + '</p>';
+        var d = new Date(); // for now
+         
+        
+       
+        var time = '<p>Time: ' +d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+'</p>'
 
         var colours = new Array();
         colours[0] = 'green';
@@ -64,7 +71,7 @@ $(document).ready(function () {
         colours[5] = 'orange';
 
 
-        $('.sticky_notes').append('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + description + '</li>');
+        $('.sticky_notes').append('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + desc + statuses + time+'</li>');
     }
 
     /**

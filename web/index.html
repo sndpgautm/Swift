@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Swift</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" rel="stylesheet" href="styles.css">
+        <link type="text/css" rel="stylesheet" href="style/styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
         <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
 
@@ -61,24 +61,27 @@ and open the template in the editor.
             </nav><!-- #header-nav -->
         </header>
 
-        <table class="newTasks" id="newTasks">
-            <tr><th>Title</th><th>Description</th><th></th></tr>
-            <tr><td><input type="text" id="title-1" value="Get Milk" /></td><td><input type="text" id="description-1" value="Need to go shopping to pick up milk." /></td><td><a class="deleteButton" id="delete-1" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-2" value="Pay Bills" /></td><td><input type="text" id="description-2" value="Gas and electric bills due soon." /></td><td><a class="deleteButton" id="delete-2" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-3" value="Take Dogs To Vets" /></td><td><input type="text" id="description-3" value="Dog needs taking to vets for injection." /></td><td><a class="deleteButton" id="delete-3" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-4" value="Record Tv Program" /></td><td><input type="text" id="description-4" value="Saving Private Ryan on tv make sure you record it." /></td><td><a class="deleteButton" id="delete-4" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-5" value="Go Doctors" /></td><td><input type="text" id="description-5" value="Doctors appointment is tomorrow!" /></td><td><a class="deleteButton" id="delete-5" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-6" value="Car Insurance" /></td><td><input type="text" id="description-6" value="Car insurance due end of the month." /></td><td><a class="deleteButton" id="delete-6" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-7" value="Go Dentist" /></td><td><input type="text" id="description-7" value="Dentist appointment is next Week. Make sure you bruch them teeth!" /></td><td><a class="deleteButton" id="delete-7" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-8" value="Home Insurance" /></td><td><input type="text" id="description-8" value="House insurance finishes tomorrow don't burn the place down." /></td><td><a class="deleteButton" id="delete-8" title="Delete Task">X</a></td></tr>
+        <table id="newTasks">
+            <tr><th>Table No.</th><th>Orders</th><th>Statuses</th><th>Delete</th></tr>
+            <tr><td><input type="text" id="title-1" value="1" /></td><td><input type="text" id="orders-1" value="SAG AALU(G,L)" /></td><td><input type="text" id="status-1" value="Order Taken" /></td><td><a class="deleteButton" id="delete-1" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-2" value="2" /></td><td><input type="text" id="orders-2" value="TOFU MASALA (G, L)" /></td><td><input type="text" id="status-2" value="Order Taken" /></td><td><a class="deleteButton" id="delete-2" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-3" value="3" /></td><td><input type="text" id="orders-3" value="SABJEE KORMA (G)" /></td><td><input type="text" id="status-3" value="Order Taken" /></td><td><a class="deleteButton" id="delete-3" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-4" value="4" /></td><td><input type="text" id="orders-4" value="MALAHI KOFTA (G)" /></td><td><input type="text" id="status-4" value="Order Taken" /></td><td><a class="deleteButton" id="delete-4" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-5" value="5" /></td><td><input type="text" id="orders-5" value="PANEER MASALA (G)" /></td><td><input type="text" id="status-5" value="Order Taken" /></td><td><a class="deleteButton" id="delete-5" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-6" value="6" /></td><td><input type="text" id="orders-6" value="KUKHURAKO MASU (G, L)" /></td><td><input type="text" id="status-6" value="Order Taken" /></td><td><a class="deleteButton" id="delete-6" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-7" value="7" /></td><td><input type="text" id="orders-7" value="KUKHURA CHILLI (G, L)" /></td><td><input type="text" id="status-7" value="Order Taken" /></td><td><a class="deleteButton" id="delete-7" title="Delete Task">X</a></td></tr>
+            <tr><td><input type="text" id="title-8" value="8" /></td><td><input type="text" id="orders-8" value="KUKHURA KORMA (G)" /></td><td><input type="text" id="status-8" value="Order Taken" /></td><td><a class="deleteButton" id="delete-8" title="Delete Task">X</a></td></tr>
         </table>
-        <p><input type="button" id="addNew" value="Add" /></p>
-        <p><input type="button" id="refreshNotes" value="Refresh Sticky Notes" /></p>
-
+        
+        
+        
+        
+        <input type="button" class="btn" id="addNew" value="Add" /><br>
+        <input type="button" class="btn" id="refreshNotes" value="Refresh Sticky notes"/>
         <ul class="sticky_notes">
 
         </ul>
-
+        
 
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>

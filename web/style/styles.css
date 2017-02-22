@@ -66,15 +66,62 @@ a h1{
 }
 /*End of Navigation bar stylesheet*/
 
-/*Notes stylesheet*/
-.newTasks{
+/*Table's stylesheet*/
+#newTasks{
+    
+    margin-left: auto;
+    margin-right: auto;
     padding:3px;
     border:1px solid #888;	
     -moz-border-radius:3px;  
     -webkit-border-radius: 3px;  
     border-radius:3px;
+     
 }
-.newTasks input[type=text] { width:300px; padding:3px };
+
+.deleteButton{
+    margin-left: 5px;
+    margin-right:5px;
+}
+
+#newTasks th{
+    text-align:center;
+}
+
+
+#newTasks input[type=text] { width:300px; padding:3px };
+
+
+body #refreshNotes{
+    display:block;
+    width:10%;
+    margin-top: 10px;
+    margin-left:auto;
+    
+    margin-right: auto;
+}
+
+
+
+body input[type=button]{
+    display:block;
+    width:30%;
+    margin-top: 10px;
+    margin-left:auto;
+    
+    margin-right: auto;
+}
+
+
+
+/*End of Table's stylesheet*/
+
+/*Notes stylesheet*/
+
+
+
+
+
 
 ul.sticky_notes{ list-style:none; }
 
@@ -95,6 +142,8 @@ ul.sticky_notes li{
     -moz-transform:rotate(-6deg);  
     font-family: 'Short Stack', cursive;
 }
+
+
 
 ul.sticky_notes li:nth-child(odd){  
     -o-transform:rotate(4deg);  
