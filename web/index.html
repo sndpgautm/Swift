@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Swift</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" rel="stylesheet" href="style/styles.css">
+        <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
         <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
 
@@ -48,11 +48,11 @@ and open the template in the editor.
                                     <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs">Menu</a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a id="takeOrder" href="orders.html">
                                     <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs">Take order</a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="orders.html">
                                     <span class="glyphicon glyphicon-log-in"></span><br class="hidden-xs">Login</a>
                             </li>
                         </ul>
@@ -62,22 +62,18 @@ and open the template in the editor.
         </header>
 
         <table id="newTasks">
-            <tr><th>Table No.</th><th>Orders</th><th>Statuses</th><th>Delete</th></tr>
-            <tr><td><input type="text" id="title-1" value="1" /></td><td><input type="text" id="orders-1" value="SAG AALU(G,L)" /></td><td><input type="text" id="status-1" value="Order Taken" /></td><td><a class="deleteButton" id="delete-1" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-2" value="2" /></td><td><input type="text" id="orders-2" value="TOFU MASALA (G, L)" /></td><td><input type="text" id="status-2" value="Order Taken" /></td><td><a class="deleteButton" id="delete-2" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-3" value="3" /></td><td><input type="text" id="orders-3" value="SABJEE KORMA (G)" /></td><td><input type="text" id="status-3" value="Order Taken" /></td><td><a class="deleteButton" id="delete-3" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-4" value="4" /></td><td><input type="text" id="orders-4" value="MALAHI KOFTA (G)" /></td><td><input type="text" id="status-4" value="Order Taken" /></td><td><a class="deleteButton" id="delete-4" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-5" value="5" /></td><td><input type="text" id="orders-5" value="PANEER MASALA (G)" /></td><td><input type="text" id="status-5" value="Order Taken" /></td><td><a class="deleteButton" id="delete-5" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-6" value="6" /></td><td><input type="text" id="orders-6" value="KUKHURAKO MASU (G, L)" /></td><td><input type="text" id="status-6" value="Order Taken" /></td><td><a class="deleteButton" id="delete-6" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-7" value="7" /></td><td><input type="text" id="orders-7" value="KUKHURA CHILLI (G, L)" /></td><td><input type="text" id="status-7" value="Order Taken" /></td><td><a class="deleteButton" id="delete-7" title="Delete Task">X</a></td></tr>
-            <tr><td><input type="text" id="title-8" value="8" /></td><td><input type="text" id="orders-8" value="KUKHURA KORMA (G)" /></td><td><input type="text" id="status-8" value="Order Taken" /></td><td><a class="deleteButton" id="delete-8" title="Delete Task">X</a></td></tr>
+            
+            <tr><td>Table No.</td><td><input type="text" id="table" value="" /></td></tr>
+            <tr><td>Orders</td><td><input type="text" id="orders" value="" /></td></tr>
+            <tr><td>Status</td><td><input type="text" id="status" value="" /></td></tr>
+            <tr><td colspan="2"><a class="deleteButton" id="delete" title="">Refresh</a></td></tr>
         </table>
         
         
         
         
         <input type="button" class="btn" id="addNew" value="Add" /><br>
-        <input type="button" class="btn" id="refreshNotes" value="Refresh Sticky notes"/>
+<!--        <input type="button" class="btn" id="refreshNotes" value="Refresh Sticky notes"/>-->
         <ul class="sticky_notes">
 
         </ul>
@@ -85,7 +81,7 @@ and open the template in the editor.
 
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </body>
 
 </html>
