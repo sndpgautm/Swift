@@ -104,7 +104,7 @@ public class FoodOrderResource {
             foods.addAll(tempList);
             System.out.println(foods);
         }
-        FoodOrder a = new FoodOrder(ob.getInt("table_No"), foods);
+        FoodOrder a = new FoodOrder(ob.getInt("table_No"), foods,ob.getString("status"));
         session.saveOrUpdate(a);
         session.getTransaction().commit();
         return a;

@@ -31,15 +31,15 @@ $(document).ready(function () {
 
     //Refresh notes button click event
     $('#refreshNotes').click(function () {
-        
-        
+
+
         refreshNotes();
     });
 
     //Delete button click event
     $('.deleteButton').click(function () {
-        
-        
+
+
         deleteRow($(this));
     });
 
@@ -55,9 +55,18 @@ $(document).ready(function () {
     }
 
     $('#add-dish-no').click(function () {
-        
+
         $('#newTasks').append('<tr><td></td><td><input type="text" placeholder="Dish No." inputmode="numeric" name="dishNo[]" ></td></tr>');
     });
+
+    /**
+     * Deletes the children of the delete button
+     */
+    function deleteRow(thisButton) {
+        $('#delafter').nextAll().remove();
+        $('#newTasks').find("input").val("");
+
+    }
     /*End of table functions */
 
 
@@ -77,7 +86,10 @@ $(document).ready(function () {
             return parseInt($(this).val());
         }).get();
         var status = tableRows.find('input[id^="status"]').val();
+
+
         if (title && status && orders) {
+            postInServer(title, orders, status);
             createNotes(title, orders, status);
         }
 
@@ -126,19 +138,50 @@ $(document).ready(function () {
         return Math.floor(Math.random() * (to - from + 1) + from);
     }
 
-    /**
-     * Deletes the grandparent of the delete button
-     */
-    function deleteRow(thisButton) {
-        $('#delafter').nextAll().remove();
-        $('#newTasks').find("input").val("");
+
+    /*End of Note functions */
+
+    /*Server functions */
+    function postInServer(title, orders, status) {
+        
+        
+        var c = {
+            "table_No": parseInt(title),
+            "food_Id": orders,
+            "status":status
+            
+        };
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            dataType: "json",
+            data: JSON.stringify(c),
+            url: "http://localhost:8080/Swift/webresources/orders",
+            success: function (newOrder) {
+                console.log(newOrder);
+                var foods = "";
+                $.each(newOrder.items, function (i, item) {
+                    foods = foods + item.foodName + ", ";
+                });
+                console.log(foods);
+                
+
+            }
+
+        });
+        /*End of Server Functions */
 
     }
 
 });
-/*End of Note functions */
-/**
- * Click event function to append a new row to the tasks table
- */
+
+
+
+
+
+
 
 

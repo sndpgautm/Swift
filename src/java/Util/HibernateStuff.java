@@ -29,7 +29,7 @@ public class HibernateStuff {
         config.addAnnotatedClass(Model.FoodOrder.class);
         config.addAnnotatedClass(Model.Note.class);
         config.addAnnotatedClass(Model.Position.class);
-        config.addAnnotatedClass(Model.OrderStatus.class);
+        
         
         config = config.configure();
         

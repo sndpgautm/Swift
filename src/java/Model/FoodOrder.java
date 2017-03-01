@@ -37,17 +37,17 @@ public class FoodOrder implements Serializable {
     private int tableNo;
     private Date orderPlacedAt;
     private List<Food> items;
-    private OrderStatus status;
+    private String status;
     
     public FoodOrder() {
-        this(0, new ArrayList<Food>());
+        this(0, new ArrayList<Food>(),"Order Received");
     };
     
-    public FoodOrder(int tableNo, List<Food> items){
+    public FoodOrder(int tableNo, List<Food> items,String status){
         this.orderId = 0L;
         this.tableNo = tableNo;
         this.items = items;
-        this.status = OrderStatus.RECIEVED;
+        this.status = status;
         this.total = 0;
         for (Food f : this.items) {
             this.total = this.total + f.getPrice();
@@ -75,8 +75,8 @@ public class FoodOrder implements Serializable {
     }
     
     @XmlElement
-    @Enumerated(EnumType.ORDINAL)
-    public OrderStatus getStatus() {
+    @Basic
+    public String getStatus() {
         return this.status;
     }
     
@@ -115,7 +115,7 @@ public class FoodOrder implements Serializable {
         this.items = items;
     }
 
-    public void setStatus(OrderStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -124,11 +124,11 @@ public class FoodOrder implements Serializable {
     }
     
     public void orderCooked() {
-        this.status = OrderStatus.COOKED;
+        this.status = "Order Cooked";
     }
     
     public void orderDelivered() {
-        this.status = OrderStatus.DELIVERED;
+        this.status = "Order Delivered";
     }
     
      
