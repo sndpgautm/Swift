@@ -9,8 +9,10 @@ and open the template in the editor.
         <title>Swift</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" rel="stylesheet" href="styles.css">
+        
+        <link type="text/css" rel="stylesheet" href="css/styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="css/Navigation-Clean1.css">
         <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
 
     </head>
@@ -64,16 +66,17 @@ and open the template in the editor.
         <table id="newTasks">
             
             <tr><td>Table No.</td><td><input type="text" id="table" value="" /></td></tr>
-            <tr><td>Orders</td><td><input type="text" id="orders" value="" /></td></tr>
+            
             <tr><td>Status</td><td><input type="text" id="status" value="" /></td></tr>
-            <tr><td colspan="2"><a class="deleteButton" id="delete" title="">Refresh</a></td></tr>
+            <tr><td>Orders</td><td><input type="text" placeholder="Dish No." inputmode="numeric" id="orders" value="" name="dishNo[]"/></td></tr>
+            <tr id="delafter"><td colspan="2"><a class="deleteButton" id="delete" title="">Refresh</a></td></tr>
         </table>
         
         
         
         
-        <input type="button" class="btn" id="addNew" value="Add" /><br>
-<!--        <input type="button" class="btn" id="refreshNotes" value="Refresh Sticky notes"/>-->
+        <input type="button" class="btn" id="addNew" value="Add Order" /><br>
+        <input type="button" class="btn" id="add-dish-no" value="Add dish Number"/>
         <ul class="sticky_notes">
 
         </ul>
@@ -81,7 +84,7 @@ and open the template in the editor.
 
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
     </body>
 
 </html>

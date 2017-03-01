@@ -5,53 +5,77 @@
  */
 $(document).ready(function () {
     $('#newTasks').hide();
-    $('#addNew').hide();
+    $('input[type="button"]').hide();
+
+
     /*Navbar functions */
     $('#takeOrder').click(function (event) {
         event.preventDefault();
         $('#newTasks').show();
-        $('#addNew').show();
+        $('input[type="button"]').show();
     });
     /*End of Navbar functions */
 
-    //Add button click event
-    $('#addNew').click(function () {
 
-        addNewRow();
-    });
-
-    //Refresh notes button click event
-    $('#refreshNotes').click(function () {
-        refreshNotes();
-    });
-
-    //Delete button click event
-    $('.deleteButton').click(function () {
-        deleteRow($(this));
-    });
-
-    function addNewRow() {
-//        var numRows = $('#newTasks tr').length;
-//
-//        $('#newTasks').append('<tr><td><input type="text" id="title-' + numRows + '" /></td><td><input type="text" id="orders-' + numRows + '" /></td><td><input type="text" id="status-'+numRows+'" /></td></tr>');
-        refreshNotes();
-        $('#newTasks').find("input").val("");
-        $('#newTasks').hide();
-        $('#addNew').hide();
-    }
 
     /**
      * Click event function to start the creation of the task sticky notes
      * Get each of the rows in the task list and create a sticky note for each of them
      */
+    /* Table functions */
+    //Add button click event
+    $('#addNew').click(function () {
+
+        addNote();
+    });
+
+    //Refresh notes button click event
+    $('#refreshNotes').click(function () {
+        
+        
+        refreshNotes();
+    });
+
+    //Delete button click event
+    $('.deleteButton').click(function () {
+        
+        
+        deleteRow($(this));
+    });
+
+    function addNote() {
+//        var numRows = $('#newTasks tr').length;
+//
+//        $('#newTasks').append('<tr><td><input type="text" id="title-' + numRows + '" /></td><td><input type="text" id="orders-' + numRows + '" /></td><td><input type="text" id="status-'+numRows+'" /></td></tr>');
+        refreshNotes();
+        $('#delafter').nextAll().remove();
+        $('#newTasks').find("input").val("");
+        $('#newTasks').hide();
+        $('input[type="button"]').hide();
+    }
+
+    $('#add-dish-no').click(function () {
+        
+        $('#newTasks').append('<tr><td></td><td><input type="text" placeholder="Dish No." inputmode="numeric" name="dishNo[]" ></td></tr>');
+    });
+    /*End of table functions */
+
+
+    /**
+     * Creates the sticky notes and gives it a random colour.
+     */
+
+    /*Note functions */
     function refreshNotes() {
 
 
-        /* Table functions */
+
         var tableRows = $('#newTasks');
-        console.log(tableRows);
+
         var title = tableRows.find('input[id^="table"]').val();
-        var orders = tableRows.find('input[id^="orders"]').val();
+        var orders = $('input[name="dishNo[]"]').map(function () {
+            return parseInt($(this).val());
+        }).get();
         var status = tableRows.find('input[id^="status"]').val();
         if (title && status && orders) {
             createNotes(title, orders, status);
@@ -60,21 +84,26 @@ $(document).ready(function () {
         console.log(title);
 
     }
-    /*End of table functions */
-    /**
-     * Creates the sticky notes and gives it a random colour.
-     */
 
-    /*Note functions */
     function createNotes(title, orders, status) {
         var header = '<h4>Table No.' + title + '</h4>';
-        var desc = '<p>Orders: ' + orders + '</p>';
+        var desc = '<p>Orders: ' + orders[0];
+
+        for (var i = 1; i < orders.length; i++) {
+            if (orders[i]) {
+                desc += "," + orders[i];
+            }
+
+        }
+
+
+        desc += '</p>';
         var statuses = '<p>Status: ' + status + '</p>';
         var d = new Date(); // for now
 
 
 
-        var time = '<p>Time: ' + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + '</p>'
+        var time = '<p>Time: ' + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + '</p>';
 
         var colours = new Array();
         colours[0] = 'green';
@@ -101,7 +130,9 @@ $(document).ready(function () {
      * Deletes the grandparent of the delete button
      */
     function deleteRow(thisButton) {
+        $('#delafter').nextAll().remove();
         $('#newTasks').find("input").val("");
+
     }
 
 });

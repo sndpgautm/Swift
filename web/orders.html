@@ -20,7 +20,7 @@
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: "http://localhost:8080/Swift_CopyForMe/webresources/orders",
+                    url: "http://localhost:8080/Swift/webresources/orders",
                     success: function (orders) {
                         console.log(orders);
                         $.each(orders, function (i, order) {
@@ -59,7 +59,7 @@
                         },
                         dataType: "json",
                         data: JSON.stringify(c),
-                        url: "http://localhost:8080/Swift_CopyForMe/webresources/orders",
+                        url: "http://localhost:8080/Swift/webresources/orders",
                         success: function (newOrder) {
                             console.log(newOrder);
                             var foods = "";
@@ -124,6 +124,7 @@
                 </div>
             </div>
         </div>
+        
     </body>
 
 </html>
