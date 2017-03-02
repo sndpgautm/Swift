@@ -81,9 +81,9 @@ public class FoodOrder implements Serializable {
     }
     
     
-    @XmlElement
-    @ManyToMany (targetEntity=Food.class,
-            fetch=FetchType.LAZY,
+    
+    @OneToMany (targetEntity=Food.class,
+            fetch=FetchType.EAGER,
             cascade=CascadeType.ALL)
     public List<Food> getItems() {
         return this.items;

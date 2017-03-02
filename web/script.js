@@ -6,7 +6,8 @@
 $(document).ready(function () {
     $('#newTasks').hide();
     $('input[type="button"]').hide();
-
+    
+    getFromServer();
 
     /*Navbar functions */
     $('#takeOrder').click(function (event) {
@@ -90,14 +91,14 @@ $(document).ready(function () {
 
         if (title && status && orders) {
             postInServer(title, orders, status);
-            createNotes(title, orders, status);
+            
         }
 
-        console.log(title);
+        
 
     }
 
-    function createNotes(title, orders, status) {
+    function createNotes(title, orders, status, tPrice) {
         var header = '<h4>Table No.' + title + '</h4>';
         var desc = '<p>Orders: ' + orders[0];
 
@@ -111,6 +112,7 @@ $(document).ready(function () {
 
         desc += '</p>';
         var statuses = '<p>Status: ' + status + '</p>';
+        var newPrice = '<p>Total Price: '+tPrice+'</p>';
         var d = new Date(); // for now
 
 
@@ -126,7 +128,7 @@ $(document).ready(function () {
         colours[5] = 'orange';
 
 
-        $('.sticky_notes').append('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + desc + statuses + time + '</li>');
+        $('.sticky_notes').append('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + desc + statuses + time + newPrice+'</li>');
     }
 
     /**
@@ -143,13 +145,13 @@ $(document).ready(function () {
 
     /*Server functions */
     function postInServer(title, orders, status) {
-        
-        
+
+
         var c = {
             "table_No": parseInt(title),
             "food_Id": orders,
-            "status":status
-            
+            "status": status
+
         };
         $.ajax({
             type: "POST",
@@ -161,20 +163,49 @@ $(document).ready(function () {
             data: JSON.stringify(c),
             url: "http://localhost:8080/Swift/webresources/orders",
             success: function (newOrder) {
-                console.log(newOrder);
+                var tPrice = 0;
+                for(var i=0;i<newOrder.items.length;i++){
+                    tPrice+=newOrder.items[i].price;
+                }
+                createNotes(title, orders, status, tPrice);
+                console.log("price"+tPrice);
+                
                 var foods = "";
                 $.each(newOrder.items, function (i, item) {
                     foods = foods + item.foodName + ", ";
                 });
-                console.log(foods);
                 
+
 
             }
 
         });
-        /*End of Server Functions */
+
 
     }
+
+    function getFromServer() {
+        console.log("gettingfromserver");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://localhost:8080/Swift/webresources/orders",
+            success: function (orders) {
+                console.log(orders);
+                $.each(orders, function (i, order) {
+                    var foods = "";
+                    $.each(order.items, function (i, item) {
+                        foods = foods + item.foodName + ", ";
+                    });
+                    console.log(foods);
+                    
+                });
+            }
+
+        });
+    }
+
+    /*End of Server Functions */
 
 });
 

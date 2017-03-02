@@ -6,6 +6,7 @@
 package Resources;
 
 import Model.Food;
+import Model.FoodData;
 import Model.FoodOrder;
 import Util.HibernateStuff;
 import java.util.ArrayList;
@@ -100,9 +101,9 @@ public class FoodOrderResource {
         List<Food> foods = new ArrayList<Food>();
         for(int i=0; i < ob.getJsonArray("food_Id").size(); i++){
             int a = ob.getJsonArray("food_Id").getInt(i);
-            List tempList = session.createCriteria(Food.class).add(Restrictions.eq("foodId", a)).list();
-            foods.addAll(tempList);
-            System.out.println(foods);
+            Food tempFood = FoodData.getFoodInstance().getFood(a);
+            foods.add(new Food(tempFood.getFoodName(),tempFood.getIngredients(),tempFood.getPrice()));
+            
         }
         FoodOrder a = new FoodOrder(ob.getInt("table_No"), foods,ob.getString("status"));
         session.saveOrUpdate(a);

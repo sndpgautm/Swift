@@ -46,10 +46,7 @@ public class FoodResource {
     public List<Food> getMenu() {
         Session session = HibernateStuff.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
-        List<Food> menu = new FoodData().getMenu();
-        for(Food f : menu){
-            session.saveOrUpdate(f);
-        }
+        List<Food> menu = session.createCriteria(Food.class).list();
         session.getTransaction().commit();
         return menu;
     }
