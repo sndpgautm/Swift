@@ -98,13 +98,16 @@ public class FoodOrderResource {
     public FoodOrder addOrder(JsonObject ob) {
         Session session = HibernateStuff.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
-        List<Food> foods = new ArrayList<Food>();
+        List<Food> foods = new ArrayList<>();
+        
         for(int i=0; i < ob.getJsonArray("food_Id").size(); i++){
             int a = ob.getJsonArray("food_Id").getInt(i);
-            Food tempFood = FoodData.getFoodInstance().getFood(a);
-            foods.add(new Food(tempFood.getFoodName(),tempFood.getIngredients(),tempFood.getPrice()));
+            List tempList = session.createCriteria(Food.class).add(Restrictions.eq("foodId",a)).list();
+            foods.addAll(tempList);
+            System.out.println(foods);
             
         }
+        
         FoodOrder a = new FoodOrder(ob.getInt("table_No"), foods,ob.getString("status"));
         session.saveOrUpdate(a);
         session.getTransaction().commit();

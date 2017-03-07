@@ -74,5 +74,10 @@ public class FoodData {
         
         return menu.get(i);
     }
+    
+    public ArrayList<Food> getMenu() {
+        return menu;
+    }
+    
 
 }

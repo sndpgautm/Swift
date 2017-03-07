@@ -50,4 +50,19 @@ public class FoodResource {
         session.getTransaction().commit();
         return menu;
     }
+    
+    
+    @Path("/addmenu")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Food> addMenu() {
+        Session session = HibernateStuff.getInstance().getSessionFactory().openSession();
+        session.beginTransaction();
+        List<Food> menu = new FoodData().getMenu();
+        for(Food f : menu){
+            session.saveOrUpdate(f);
+        }
+        session.getTransaction().commit();
+        return menu;
+    }
 }

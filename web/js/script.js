@@ -153,6 +153,8 @@ $(document).ready(function () {
             "status": status
 
         };
+        console.log(c);
+        console.log(JSON.stringify(c));
         $.ajax({
             type: "POST",
             headers: {
