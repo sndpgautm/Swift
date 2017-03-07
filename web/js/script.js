@@ -6,7 +6,7 @@
 $(document).ready(function () {
     $('#newTasks').hide();
     $('input[type="button"]').hide();
-    
+
     getFromServer();
 
     /*Navbar functions */
@@ -91,10 +91,10 @@ $(document).ready(function () {
 
         if (title && status && orders) {
             postInServer(title, orders, status);
-            
+
         }
 
-        
+
 
     }
 
@@ -112,7 +112,7 @@ $(document).ready(function () {
 
         desc += '</p>';
         var statuses = '<p>Status: ' + status + '</p>';
-        var newPrice = '<p>Total Price: '+tPrice+'</p>';
+        var newPrice = '<p>Total Price: ' + tPrice + '</p>';
         var d = new Date(); // for now
 
 
@@ -128,7 +128,7 @@ $(document).ready(function () {
         colours[5] = 'orange';
 
 
-        $('.sticky_notes').append('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + desc + statuses + time + newPrice+'</li>');
+        $('.sticky_notes').append('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + desc + statuses + time + newPrice + '</li>');
     }
 
     /**
@@ -153,6 +153,8 @@ $(document).ready(function () {
             "status": status
 
         };
+        console.log(c);
+        console.log(JSON.stringify(c));
         $.ajax({
             type: "POST",
             headers: {
@@ -164,17 +166,14 @@ $(document).ready(function () {
             url: "http://localhost:8080/Swift/webresources/orders",
             success: function (newOrder) {
                 var tPrice = 0;
-                for(var i=0;i<newOrder.items.length;i++){
-                    tPrice+=newOrder.items[i].price;
+                for (var i = 0; i < newOrder.items.length; i++) {
+                    tPrice += newOrder.items[i].price;
                 }
                 createNotes(title, orders, status, tPrice);
-                console.log("price"+tPrice);
-                
-                var foods = "";
-                $.each(newOrder.items, function (i, item) {
-                    foods = foods + item.foodName + ", ";
-                });
-                
+                console.log("price" + tPrice);
+
+               
+
 
 
             }
@@ -185,21 +184,26 @@ $(document).ready(function () {
     }
 
     function getFromServer() {
-        console.log("gettingfromserver");
+
         $.ajax({
             type: "GET",
             dataType: "json",
             url: "http://localhost:8080/Swift/webresources/orders",
             success: function (orders) {
-                console.log(orders);
-                $.each(orders, function (i, order) {
-                    var foods = "";
-                    $.each(order.items, function (i, item) {
-                        foods = foods + item.foodName + ", ";
-                    });
-                    console.log(foods);
+                for (var i = 0; i < orders.length; i++) {
+                    console.log(orders);
+                    var tPrice = 0;
+                    var itemList = [];
+                    for(var j=0;j<orders[i].items.length;j++){
+                        itemList.push(orders[i].items[j].foodId);
+                        console.log(orders[i].items[j].foodId);
+                    }
+                    createNotes(orders[i].tableNo, itemList, orders[i].status, orders[i].total);
                     
-                });
+
+                    
+                }
+
             }
 
         });
