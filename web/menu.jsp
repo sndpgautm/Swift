@@ -51,44 +51,23 @@
     </head>
 
     <body>
+        <% if (session.getAttribute("username") == null) {
+                response.sendRedirect("login.html");
+            }
+        %>
 
 
-        <!--
-        <div>
-            <nav class="navbar navbar-default navigation-clean">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand navbar-link" href="index.jsp"><img src="img/marpha.png" id="brand-logo"></a>
-                        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li role="presentation"><a href="index.jsp">Orders </a></li>
-                            <li role="presentation"><a href="#">Messages </a></li>
-                            <li class="active" role="presentation"><a href="menu.jsp">Menu </a></li>
-                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">${username}<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a href="#">Employee Id</a></li>
-                                    <li role="presentation"><a href="#">View Profile</a></li>
-                                    <li role="presentation"><a href="logout">Sign Out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div> -->
         <header>
             <nav id="header-nav" class="navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="index.html" class="pull-left visible-md visible-lg">
+                        <a href="menu.jsp" class="pull-left visible-md visible-lg">
                             <div id="logo-img"></div>
 
                         </a>
 
                         <div class="navbar-brand">
-                            <a href="index.html"><h1>Swift Web Application</h1></a>
+                            <a href="menu.jsp"><h1>Swift Web Application</h1></a>
                             <div id="sublogo">
                                 <img src="images/restaurant.ico" height="65" width="65" alt="Swift logo">
                                 <span>A restaurant app</span>
@@ -110,12 +89,15 @@
                                     <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs">Menu</a>
                             </li>
                             <li>
-                                <a id="takeOrder" href="orders.html">
+                                <a id="takeOrder" href="order.jsp">
                                     <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs">Take order</a>
                             </li>
                             <li>
-                                <a href="logout.jsp">
-                                    <span class="glyphicon glyphicon-log-in"></span><br class="hidden-xs">Login</a>
+                                ${username}
+                            </li>
+                            <li>
+                                <a href="logout">
+                                    <span class="glyphicon glyphicon-log-in"></span><br class="hidden-xs">Log Out</a>
                             </li>
                         </ul>
                     </div>
