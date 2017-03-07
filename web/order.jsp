@@ -17,7 +17,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link type="text/css" rel="stylesheet" href="css/styles.css">
+        <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="css/Navigation-Clean1.css">
         <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
@@ -31,8 +31,8 @@ and open the template in the editor.
 
         <header>
             <nav id="header-nav" class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
+                <div class="container" >
+                    <div class="navbar-header" id="move">
                         <a href="menu.jsp" class="pull-left visible-md visible-lg">
                             <div id="logo-img"></div>
 
@@ -56,6 +56,11 @@ and open the template in the editor.
 
                     <div id="collapsable-nav" class="collapse navbar-collapse">
                         <ul id="nav-list" class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-user"></span><br class="hidden-xs">${username}
+                                </a>
+                            </li>
                             <li id="navMenuButton">
                                 <a href="menu.jsp">
                                     <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs">Menu</a>
@@ -65,18 +70,10 @@ and open the template in the editor.
                                     <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs">Take order</a>
                             </li>
                             <li>
-<<<<<<< HEAD
-<<<<<<< HEAD:web/index.html
-                                <a href="orders.html">
-                                    <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Logout</a>
-=======
+
                                 <a href="logout">
                                     <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
->>>>>>> cd51ca63ae081ecd51c75d4deaad47ea4416d81d:web/order.jsp
-=======
-                                <a href="logout">
-                                    <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
->>>>>>> 8ae08b5acb3a11b3c4c6318b104953128244ecf9
+
                             </li>
                         </ul>
                     </div>

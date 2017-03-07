@@ -13,9 +13,9 @@
         <title>Swift for Marpha</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/navbar.css">
+
         <link rel="stylesheet" href="css/menuStyles.css">
-        <link type="text/css" rel="stylesheet" href="css/styles.css">
+        <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="css/Navigation-Clean1.css">
         <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
@@ -23,27 +23,27 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function () {
-                
-                
-                    var $accordion = $('#accordion-1');
-                    $.ajax({
-                        type: "GET",
-                        dataType: "json",
-                        url: "http://localhost:8080/Swift/webresources/menu",
-                        success: function (foods) {
+
+
+                var $accordion = $('#accordion-1');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "http://localhost:8080/Swift/webresources/menu",
+                    success: function (foods) {
+                        console.log(foods);
+                        $.each(foods, function (i, food) {
                             console.log(foods);
-                            $.each(foods, function (i, food) {
-                                console.log(foods);
-                                $accordion.append('<div class="panel panel-default"> <div class="pannel-heading" role=tab"> \n\
+                            $accordion.append('<div class="panel panel-default"> <div class="pannel-heading" role=tab"> \n\
                     <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion-1" aria-expanded="false"\n\
                     href="#accordion-1 .item-' + i + '">' + food.foodId + '. ' + food.foodName + ' </a></h4></div>\n\
                     <div class="panel-collapse collapse item-' + i + '" role="tabpanel">\n\
                     <div class="panel-body"><span>' + food.ingredients + ' <br> <br>' + 'Price: ' + food.price + ' euros. </span></div></div></div>');
-                            });
-                        }
+                        });
+                    }
 
-                    });
-                
+                });
+
 
             });
         </script>
@@ -60,7 +60,7 @@
         <header>
             <nav id="header-nav" class="navbar navbar-default">
                 <div class="container">
-                    <div class="navbar-header">
+                    <div class="navbar-header leftpull">
                         <a href="menu.jsp" class="pull-left visible-md visible-lg">
                             <div id="logo-img"></div>
 
@@ -81,9 +81,14 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div><!-- navbar-header-->
-
+                    
                     <div id="collapsable-nav" class="collapse navbar-collapse">
                         <ul id="nav-list" class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-user"></span><br class="hidden-xs">${username}
+                                </a>
+                            </li>
                             <li id="navMenuButton">
                                 <a href="menu.jsp">
                                     <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs">Menu</a>
@@ -92,12 +97,10 @@
                                 <a id="takeOrder" href="order.jsp">
                                     <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs">Take order</a>
                             </li>
-                            <li>
-                                ${username}
-                            </li>
+
                             <li>
                                 <a href="logout">
-                                    <span class="glyphicon glyphicon-log-in"></span><br class="hidden-xs">Log Out</a>
+                                    <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
                             </li>
                         </ul>
                     </div>
