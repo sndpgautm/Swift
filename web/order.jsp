@@ -65,24 +65,9 @@ and open the template in the editor.
                                     <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs">Take order</a>
                             </li>
                             <li>
-<<<<<<< HEAD
                                 <a href="logout">
                                     <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD:web/index.html
-                                <a href="orders.html">
-                                    <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Logout</a>
-=======
-                                <a href="logout">
-                                    <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
->>>>>>> cd51ca63ae081ecd51c75d4deaad47ea4416d81d:web/order.jsp
-=======
-                                <a href="logout">
-                                    <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
->>>>>>> 8ae08b5acb3a11b3c4c6318b104953128244ecf9
->>>>>>> 68f2e91fe164887c194709a21f92da748232b63b
-                            </li>
+                          </li>
                         </ul>
                     </div>
                 </div><!-- .container -->
