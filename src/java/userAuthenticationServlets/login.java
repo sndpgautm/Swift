@@ -33,7 +33,7 @@ public class login extends HttpServlet {
         if(username.equals("sandip") && password.equals("hello")){
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("menu.jsp");
         }else{
             response.sendRedirect("login.html");
         }

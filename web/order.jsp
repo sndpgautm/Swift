@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index.jsp
+    Created on : Mar 7, 2017, 10:10:27 PM
+    Author     : Rocke
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -17,18 +24,22 @@ and open the template in the editor.
 
     </head>
     <body>
+        <% if (session.getAttribute("username") == null) {
+                response.sendRedirect("login.html");
+            }
+        %>
 
         <header>
             <nav id="header-nav" class="navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="index.html" class="pull-left visible-md visible-lg">
+                        <a href="menu.jsp" class="pull-left visible-md visible-lg">
                             <div id="logo-img"></div>
 
                         </a>
 
                         <div class="navbar-brand">
-                            <a href="index.html"><h1>Swift Web Application</h1></a>
+                            <a href="menu.jsp"><h1>Swift Web Application</h1></a>
                             <div id="sublogo">
                                 <img src="images/restaurant.ico" height="65" width="65" alt="Swift logo">
                                 <span>A restaurant app</span>
@@ -50,12 +61,12 @@ and open the template in the editor.
                                     <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs">Menu</a>
                             </li>
                             <li>
-                                <a id="takeOrder" href="orders.html">
+                                <a id="takeOrder" href="order.jsp">
                                     <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs">Take order</a>
                             </li>
                             <li>
-                                <a href="orders.html">
-                                    <span class="glyphicon glyphicon-log-in"></span><br class="hidden-xs">Login</a>
+                                <a href="logout">
+                                    <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
                             </li>
                         </ul>
                     </div>
