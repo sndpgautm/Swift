@@ -172,10 +172,36 @@ $(document).ready(function () {
                 createNotes(title, orders, status, tPrice);
                 console.log("price" + tPrice);
 
-               
 
 
 
+
+            },
+            error: function (xhr, textStatus, errorthrown) {
+                $.ajax({
+                    type: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    dataType: "json",
+                    data: JSON.stringify(c),
+                    url: "http://192.168.43.219:8080/Swift/webresources/orders",
+                    success: function (newOrder) {
+                        var tPrice = 0;
+                        for (var i = 0; i < newOrder.items.length; i++) {
+                            tPrice += newOrder.items[i].price;
+                        }
+                        createNotes(title, orders, status, tPrice);
+                        console.log("price" + tPrice);
+
+
+
+
+
+                    }
+
+                });
             }
 
         });
@@ -194,16 +220,40 @@ $(document).ready(function () {
                     console.log(orders);
                     var tPrice = 0;
                     var itemList = [];
-                    for(var j=0;j<orders[i].items.length;j++){
+                    for (var j = 0; j < orders[i].items.length; j++) {
                         itemList.push(orders[i].items[j].foodId);
                         console.log(orders[i].items[j].foodId);
                     }
                     createNotes(orders[i].tableNo, itemList, orders[i].status, orders[i].total);
-                    
 
-                    
+
+
                 }
 
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "http://192.168.43.219:8080/Swift/webresources/orders",
+                    success: function (orders) {
+                        for (var i = 0; i < orders.length; i++) {
+                            console.log(orders);
+                            var tPrice = 0;
+                            var itemList = [];
+                            for (var j = 0; j < orders[i].items.length; j++) {
+                                itemList.push(orders[i].items[j].foodId);
+                                console.log(orders[i].items[j].foodId);
+                            }
+                            createNotes(orders[i].tableNo, itemList, orders[i].status, orders[i].total);
+
+
+
+                        }
+
+                    }
+
+                });
             }
 
         });

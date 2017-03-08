@@ -40,6 +40,25 @@
                     <div class="panel-collapse collapse item-' + i + '" role="tabpanel">\n\
                     <div class="panel-body"><span>' + food.ingredients + ' <br> <br>' + 'Price: ' + food.price + ' euros. </span></div></div></div>');
                         });
+                    },
+                    error: function (xhr, status, error) {
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: "http://192.168.43.219:8080/Swift/webresources/menu",
+                            success: function (foods) {
+                                console.log(foods);
+                                $.each(foods, function (i, food) {
+                                    console.log(foods);
+                                    $accordion.append('<div class="panel panel-default"> <div class="pannel-heading" role=tab"> \n\
+                    <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion-1" aria-expanded="false"\n\
+                    href="#accordion-1 .item-' + i + '">' + food.foodId + '. ' + food.foodName + ' </a></h4></div>\n\
+                    <div class="panel-collapse collapse item-' + i + '" role="tabpanel">\n\
+                    <div class="panel-body"><span>' + food.ingredients + ' <br> <br>' + 'Price: ' + food.price + ' euros. </span></div></div></div>');
+                                });
+                            }
+
+                        });
                     }
 
                 });
@@ -81,7 +100,7 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div><!-- navbar-header-->
-                    
+
                     <div id="collapsable-nav" class="collapse navbar-collapse">
                         <ul id="nav-list" class="nav navbar-nav navbar-right">
                             <li>
