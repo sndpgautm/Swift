@@ -7,6 +7,7 @@ package Resources;
 
 import Model.Employee;
 import Model.Position;
+import Model.userAccount;
 import Util.HibernateStuff;
 import java.util.List;
 import javax.json.JsonObject;
@@ -45,6 +46,8 @@ public class EmployeeResource {
     { "employee_name" : "abc",
       "address" : "xyz",
       "position" : "manager" or "waiter" or "cook"
+      "username" : "sbdv"
+      "password" : "sfaf"
     }
     */
     @POST
@@ -66,7 +69,9 @@ public class EmployeeResource {
                 positionToBeAdded = Position.COOK;
                 break;
         }
-        Employee e = new Employee(ob.getString("employee_name"), ob.getString("address"), positionToBeAdded);
+        userAccount u = new userAccount(ob.getString("username"), ob.getString("password"));
+        session.saveOrUpdate(u);
+        Employee e = new Employee(ob.getString("employee_name"), ob.getString("address"), positionToBeAdded, ob.getString("username"));
         session.saveOrUpdate(e);
         session.getTransaction().commit();
         return e;
@@ -83,4 +88,19 @@ public class EmployeeResource {
         session.getTransaction().commit();
         return e;
     }
+    
+    @Path("/addManager")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Employee addManager(){
+        Session session = HibernateStuff.getInstance().getSessionFactory().openSession();
+        session.beginTransaction();
+        userAccount u = new userAccount("sndpgautm","demo");
+        session.saveOrUpdate(u);
+        Employee e = new Employee("Sandip Gautam", "Kirstinharju 1 A 4",Position.MANAGER,"sndpgautm");
+        session.saveOrUpdate(e);
+        session.getTransaction().commit();
+        return e;
+    }
+    
 }
