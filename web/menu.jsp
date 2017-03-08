@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="css/menuStyles.css">
         <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-        <link type="text/css" rel="stylesheet" href="css/Navigation-Clean1.css">
         <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -124,6 +123,7 @@
                         </ul>
                     </div>
                 </div><!-- .container -->
+
             </nav><!-- #header-nav -->
         </header>
 
