@@ -91,9 +91,10 @@ and open the template in the editor.
 
 
 
-        <input type="button" class="btn" id="addNew" value="Add Order" /><br>
-        <input type="button" class="btn" id="add-dish-no" value="Add dish Number"/>
-        <ul class="sticky_notes">
+        
+        <input type="button" class="btn btn-default btn-xs" id="add-dish-no" value="Add Dish"/>
+        <input type="button" class="btn btn-primary btn-xs" id="addNew" value="Add Order" />
+        <ul class="sticky_notes" id="sticks">
 
         </ul>
 

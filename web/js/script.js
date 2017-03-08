@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
-    $('#newTasks').hide();
-    $('input[type="button"]').hide();
+    
 
     getFromServer();
-
+    
     /*Navbar functions */
     $('#takeOrder').click(function (event) {
         event.preventDefault();
@@ -51,8 +50,7 @@ $(document).ready(function () {
         refreshNotes();
         $('#delafter').nextAll().remove();
         $('#newTasks').find("input").val("");
-        $('#newTasks').hide();
-        $('input[type="button"]').hide();
+        
     }
 
     $('#add-dish-no').click(function () {
@@ -128,7 +126,7 @@ $(document).ready(function () {
         colours[5] = 'orange';
 
 
-        $('.sticky_notes').append('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + desc + statuses + time + newPrice + '</li>');
+        $('.sticky_notes').prepend('<li class="' + colours[randomFromTo(0, (colours.length - 1))] + '">' + header + desc + statuses + time + newPrice + '</li>');
     }
 
     /**
@@ -165,12 +163,8 @@ $(document).ready(function () {
             data: JSON.stringify(c),
             url: "http://localhost:8080/Swift/webresources/orders",
             success: function (newOrder) {
-                var tPrice = 0;
-                for (var i = 0; i < newOrder.items.length; i++) {
-                    tPrice += newOrder.items[i].price;
-                }
-                createNotes(title, orders, status, tPrice);
-                console.log("price" + tPrice);
+                getFromServer();
+                
 
 
 
@@ -188,12 +182,7 @@ $(document).ready(function () {
                     data: JSON.stringify(c),
                     url: "http://192.168.43.219:8080/Swift/webresources/orders",
                     success: function (newOrder) {
-                        var tPrice = 0;
-                        for (var i = 0; i < newOrder.items.length; i++) {
-                            tPrice += newOrder.items[i].price;
-                        }
-                        createNotes(title, orders, status, tPrice);
-                        console.log("price" + tPrice);
+                        getFromServer();
 
 
 
@@ -210,7 +199,7 @@ $(document).ready(function () {
     }
 
     function getFromServer() {
-
+        $('#sticks').empty();
         $.ajax({
             type: "GET",
             dataType: "json",
