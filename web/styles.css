@@ -12,7 +12,7 @@ and open the template in the editor.
 
 
 #header-nav{
-    background-color:#FFFACD;
+    background-color:#FFFACD !important;
 }
 
 .navbar-header button.navbar-toggle, .navbar-header .icon-bar {
@@ -119,7 +119,8 @@ body #refreshNotes{
 
 body input[type=button]{
     display:block;
-    width:20%;
+    width:15%;
+    height:33px;
     margin-top: 10px;
     margin-left:auto;
 
@@ -297,6 +298,17 @@ ul.sticky_notes li:hover{
 }
 
 @media (max-width:767px){
+    
+    body input[type=button]{
+    display:block;
+    width:25%;
+    height:43px;
+    margin-top: 10px;
+    margin-left:auto;
+
+    margin-right: auto;
+}
+    
     #sublogo img{
         height:2em;
         width:2em;
@@ -322,4 +334,17 @@ ul.sticky_notes li:hover{
     a h1{
         font-size: 1.4em;
     }
+}
+
+@media (max-width:449px){
+    .navbar-brand h1{
+        font-size: 1.1em;
+    }
+    
+    #newTasks{
+        margin-left: 8px;
+        margin-right:8px;
+    }
+    
+    
 }
