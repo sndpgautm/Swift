@@ -35,8 +35,12 @@ public class login extends HttpServlet {
         Session s = HibernateStuff.getInstance().getSessionFactory().openSession();
         s.beginTransaction();
         List<userAccount> uA = s.createCriteria(userAccount.class).add(Restrictions.eq("username", username)).list();
+        System.out.println(uA.size());
+        System.out.println("i'm here");
         if (uA.size() > 0) {
             List<Employee> e = s.createCriteria(Employee.class).add(Restrictions.eq("username", username)).list();
+            System.out.println(e.size());
+            s.getTransaction().commit();
             if (uA.get(0).getUsername().equals(username) && uA.get(0).getPassword().equals(password)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
@@ -47,7 +51,7 @@ public class login extends HttpServlet {
             } else {
                 response.sendRedirect("login.html");
             }
-            s.getTransaction().commit();
+            
         } else {
             response.sendRedirect("login.html");
         }
