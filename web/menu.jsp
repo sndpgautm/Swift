@@ -11,16 +11,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Swift for Marpha</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
         <link rel="stylesheet" href="css/menuStyles.css">
         <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="css/Navigation-Clean1.css">
         <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function () {
 
@@ -39,6 +39,25 @@
                     href="#accordion-1 .item-' + i + '">' + food.foodId + '. ' + food.foodName + ' </a></h4></div>\n\
                     <div class="panel-collapse collapse item-' + i + '" role="tabpanel">\n\
                     <div class="panel-body"><span>' + food.ingredients + ' <br> <br>' + 'Price: ' + food.price + ' euros. </span></div></div></div>');
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: "http://192.168.43.219:8080/Swift/webresources/menu",
+                            success: function (foods) {
+                                console.log(foods);
+                                $.each(foods, function (i, food) {
+                                    console.log(foods);
+                                    $accordion.append('<div class="panel panel-default"> <div class="pannel-heading" role=tab"> \n\
+                    <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion-1" aria-expanded="false"\n\
+                    href="#accordion-1 .item-' + i + '">' + food.foodId + '. ' + food.foodName + ' </a></h4></div>\n\
+                    <div class="panel-collapse collapse item-' + i + '" role="tabpanel">\n\
+                    <div class="panel-body"><span>' + food.ingredients + ' <br> <br>' + 'Price: ' + food.price + ' euros. </span></div></div></div>');
+                                });
+                            }
+
                         });
                     }
 
@@ -81,7 +100,7 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div><!-- navbar-header-->
-                    
+
                     <div id="collapsable-nav" class="collapse navbar-collapse">
                         <ul id="nav-list" class="nav navbar-nav navbar-right">
                             <li>
