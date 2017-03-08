@@ -16,7 +16,7 @@ and open the template in the editor.
         <title>Swift</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="css/Navigation-Clean1.css">
@@ -70,10 +70,8 @@ and open the template in the editor.
                                     <span class="glyphicon glyphicon-pencil"></span><br class="hidden-xs">Take order</a>
                             </li>
                             <li>
-
                                 <a href="logout">
                                     <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs">Log Out</a>
-
                             </li>
                         </ul>
                     </div>
@@ -82,23 +80,23 @@ and open the template in the editor.
         </header>
 
         <table id="newTasks">
-            
+
             <tr><td>Table No.</td><td><input type="text" id="table" value="" /></td></tr>
-            
+
             <tr><td>Status</td><td><input type="text" id="status" value="" /></td></tr>
             <tr><td>Orders</td><td><input type="text" placeholder="Dish No." inputmode="numeric" id="orders" value="" name="dishNo[]"/></td></tr>
             <tr id="delafter"><td colspan="2"><a class="deleteButton" id="delete" title="">Refresh</a></td></tr>
         </table>
-        
-        
-        
-        
+
+
+
+
         <input type="button" class="btn" id="addNew" value="Add Order" /><br>
         <input type="button" class="btn" id="add-dish-no" value="Add dish Number"/>
         <ul class="sticky_notes">
 
         </ul>
-        
+
 
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
