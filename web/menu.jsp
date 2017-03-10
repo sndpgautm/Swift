@@ -17,12 +17,6 @@
         <link rel="stylesheet" href="css/menuStyles.css">
         <link type="text/css" rel="stylesheet" href="styles.css">
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-<<<<<<< HEAD
-<!--        <link type="text/css" rel="stylesheet" href="css/Navigation-Clean1.css">-->
-<!--        <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>-->
-=======
-        <link href='http://fonts.googleapis.com/css?family=Short+Stack' rel='stylesheet' type='text/css'>
->>>>>>> 77e37dca1224db67c0f8f055d74ed58d6bc1c66e
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script>
