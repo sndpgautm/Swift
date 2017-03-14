@@ -27,7 +27,9 @@ public class Food implements Serializable {
     private String ingredients;
     private double price;
     
-    public Food(){};
+    public Food(){
+        this("null","null", 0.0);
+    };
     
     public Food(String foodName, String indt, double price){
         this.foodId = 0;
